@@ -1,0 +1,24 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: 1234
+  host: localhost
+  port: 5432
+
+development:
+  <<: *default
+  database: listas_development
+
+
+test:
+  <<: *default
+  database: listas_test
+
+
+production:
+  <<: *default
+  database: listas_production
+  username: listas
+  password: <%= ENV["LISTAS_DATABASE_PASSWORD"] %>

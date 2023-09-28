@@ -1,0 +1,132 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<%= stylesheet_link_tag 'dashboard' %> <!-- Inclua seu arquivo SCSS aqui -->
+
+<div id="cabecalho">
+  <%= link_to "Tarefas", root_path, id: "tasks" %>
+</div>
+<h1>Dashboard</h1>
+
+<div id="graficos"> 
+  <canvas id="pizza" style="max-width: 400px"></canvas>
+  <canvas id="barra" style="max-width: 400px"></canvas>
+</div>
+
+<script>
+  var xLinha = []
+  xLinha = <%= @meses_done %> //Quantidade de de vezes que um mês teve uma tarefa concluída ex: [9, 9, 9] significa que tiveram 3 no mes 9
+  xLinha.sort(function(a, b) { //ordenar a lista do menor para o maior
+    return a - b;
+  });
+  var listaSemRepetir = [] 
+  for (let i = 0; i<xLinha.length; i++){ //for usado para pegar xLinha sem repetir nenhum mês, para saber quais meses tiveram tarefas concluídas
+    if (xLinha[i]!=xLinha[i-1]){
+      listaSemRepetir.push(xLinha[i])
+    }
+  }
+
+  for (let i = 0; i<listaSemRepetir.length; i++){ //trocar número por nome
+    switch (listaSemRepetir[i]) {
+    case 1:
+      listaSemRepetir[i] = "Janeiro";
+      break;
+    case 2: 
+      listaSemRepetir[i] = "Fevereiro";
+      break;
+    case 3:
+      listaSemRepetir[i] = "Março";
+      break;
+    case 4:
+      listaSemRepetir[i] = "Abril";
+      break;
+    case 5:
+      listaSemRepetir[i] = "Maio";
+      break;
+    case 6:
+      listaSemRepetir[i] = "Junho";
+      break;
+    case 7:
+      listaSemRepetir[i] = "Julho";
+      break;
+    case 8:
+      listaSemRepetir[i] = "Agosto";
+      break;
+    case 9:
+      listaSemRepetir[i] = "Setembro";
+      break;
+    case 10:
+      listaSemRepetir[i] = "Outubro";
+      break;
+    case 11:
+      listaSemRepetir[i] = "Novembro";
+      break;
+    case 12:
+      listaSemRepetir[i] = "Dezembro";
+      break;
+    default:
+      listaSemRepetir[i] = "Mês inválido";
+    }
+  }
+  var yBarra = []
+  console.log(xLinha)
+  for(let i = 0; i<xLinha.length; i++){ //for para transformar xLinha em uma lista com a quantidade de tarefas concluídas por mês ex: [9, 9, 9, 10] vira [3, 1] 
+    if(i==0){
+      yBarra.push(1) //cria um elemento com valor 1
+    }
+    else if(xLinha[i]==xLinha[i-1]){
+      yBarra[yBarra.length-1] += 1 //adiciona +1 no último elemento
+
+    }
+    else if(xLinha[i]!=xLinha[i-1]){
+      yBarra.push(1) //cria mais um elemento com valor 1
+
+    }
+  }
+  var xPizza = ["To Do", "Doing", "Done"];
+  var yPizza = [<%= @todo[0] %>, <%= @doing[0] %>, <%= @done[0] %>, 0]; // quantidade de tarefas todo, doing e done
+  var pizzaColors = [
+    "#b91d47",
+    "#00aba9",
+    "#2b5797",
+    "#e8c3b9",
+    "#1e7145"
+  ];
+
+  new Chart("pizza", {
+    type: "bar",
+    data: {
+      labels: xPizza,
+      datasets: [{
+        backgroundColor: pizzaColors,
+        data: yPizza
+      }]
+    },
+    options: {
+      legend: {display: false}
+
+
+    }
+
+  });
+
+  var xBarra = listaSemRepetir;
+
+  new Chart("barra", {
+    type: "line",
+    data: {
+      labels: xBarra,
+      datasets: [{
+        fill: false,
+        lineTension: 0,
+        backgroundColor:"rgba(0,0,255,1.0)",
+        borderColor: "rgba(0,0,255,0.1)",
+        data: yBarra
+      }]
+    },
+    options: {
+      legend: {display: false}
+
+
+    }
+  });
+</script>

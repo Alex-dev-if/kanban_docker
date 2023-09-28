@@ -1,0 +1,18 @@
+<body style="padding: 0">
+  <div id="minhaDiv">
+    <%= link_to "Mostra a Tarefa", @task, id: "back"%> 
+    <%= link_to "Voltar Para Tarefas", tasks_path, id: "back2" %>
+  </div>
+  <div id="divPaiVerde"> <!-- criei uma nova div por cima para poder usar justify content sem usar o body -->
+    <div style="background-color: rgba(1, 209, 164, 0.349); width: 400px; text-align: center; border-radius: 15px;" id="formVerde">
+      <h1 style="text-align: center">Editando a Tarefa</h1>
+      <%= render "form", task: @task %> 
+      <br>
+    </div>
+  </div>
+</body>
+
+
+
+
+

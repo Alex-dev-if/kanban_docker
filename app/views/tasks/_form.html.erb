@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag 'form' %>
+<div id="divpai">
+  <%= form_with(model: task, html: {class: "form"}) do |form| %> <!-- Form de criar e editar tarefas --> 
+    <div class= "ae">
+      <div>
+        <%= form.label :"Nome:", style: "display: block" %>
+        <%= form.text_field :name, class: "barraembaixo"  %>
+      </div>
+
+      <div>
+        <%= form.label :"Descrição:", style: "display: block"%>
+        <%= form.text_area :description, rows: 4, columns: 50,  class: "barraembaixo"  %>
+      </div>
+    </div>
+
+    <div class="nocentro">
+      <%= form.label :status %>
+      <%= form.select :status, ['To Do', 'Doing', 'Done'] %>
+    </div>
+
+    <div class="nocentro">
+      <%= form.submit "Salvar" %>
+    </div>
+  <% end %>
+</div>

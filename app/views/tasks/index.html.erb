@@ -1,0 +1,99 @@
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+
+
+
+<div id="botoes">
+  <%= link_to "Nova Tarefa", new_task_path, class: "link", id: "new" %>
+  <%= link_to "Dashboard", dashboard_path, class: "link", id: "dash" %>
+</div>
+
+<div id="tasks" class="container">
+  <!-- No códgio: três div classe sortable que são as colunas kanban-->
+  <div class="sortable" id="To Do"> 
+    <h2>A fazer</h2>  
+    <% @todo_tasks.each do |task| %> <!-- @todo_task = tasks com status todo-->
+      <div data-task-id="<%= task.id %>" class="drag" id="task_todo">
+          <div>
+            <p class="descricao">
+              <strong>Título:</strong>
+              <%= task.name %>
+            </p>
+            <p class="descricao">
+              <strong>Descrição:</strong>
+              <%= task.description %>
+            </p>
+          </div>
+          <%= link_to "Mostrar a Tarefa", task %>
+      </div>
+    <% end %>
+  </div>
+  <div class="sortable" id="Doing">
+    <h2>Em progresso</h2>
+    <% @doing_tasks.each do |task| %>
+      <div data-task-id="<%= task.id %>" class="drag" id="task_doing">
+          <div>
+          <p class="descricao">
+            <strong>Título:</strong>
+            <%= task.name %>
+          </p>
+          <p class="descricao">
+            <strong>Descrição:</strong>
+            <%= task.description %>
+          </p>
+          </div>
+          <%= link_to "Mostrar a Tarefa", task %>
+      </div>
+    <% end %>
+  </div>
+  <div class="sortable" id="Done">
+    <h2>Concluídas</h2>
+    <% @done_tasks.each do |task| %>
+      <div data-task-id="<%= task.id %>" class="drag" id="task_done">
+          <div>
+          <p class="descricao">
+            <strong>Título:</strong>
+            <%= task.name %>
+          </p>
+          <p class="descricao">
+            <strong>Descrição:</strong>
+            <%= task.description %>
+          </p>
+          </div>
+          <%= link_to "Mostrar a Tarefa", task %>
+      </div>
+
+    <% end %>
+  </div>
+
+</div>
+
+<script>
+  var quantidade_todo = <%= @quantidade_todo %>
+  var quantidade_doing = <%= @quantidade_doing %>
+  var quantidade_done = <%= @quantidade_done %>
+  $(function() {
+    var taskId;
+
+  $(".sortable").sortable({
+    connectWith: ".sortable", //para conectar o sortable nas três colunas
+    items: ".drag",
+    start: function(event, ui) {
+      taskId = ui.item.data("task-id");
+    },
+    update: function(event, ui) {
+      var divId = ui.item.parent().attr("id"); //pega o id da nova coluna kanban
+
+      $.ajax({ //requisição pra mudar o status sempre que a task for solta
+          url: "/tasks/" + taskId + "/update_status/" + divId,
+          method: "GET"
+      });
+      }
+      });
+    });
+ </script>
+
+

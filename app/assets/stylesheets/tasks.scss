@@ -1,0 +1,99 @@
+.container {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+     /* Define a altura para ocupar toda a altura da janela */
+}
+.link{
+  display: inline-block; 
+  padding: 10px 20px;
+  border: .094em solid #743EA5; 
+  border-radius: .625em;
+  box-shadow: 0 .375em .313em -0.313em rgba(0,0,0,.8), inset 0 .063em rgba(255,255,255,.4), inset 0 -0.188em rgba(0,0,0,.15);
+  color: #FFF;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: 0 .063em #000;
+  cursor:pointer;
+  font: bold 0.9rem sans-serif;
+}
+.link:active {
+  box-shadow: inset 0 0 1.094em #472566, inset 0 .063em #390668, inset 0 -0.188em #682CA0, 0 .063em rgba(255,255,255,.4); 
+}
+
+#new{
+  background-color: rgb(32, 32, 255);
+}
+#dash{
+  background-color: rgb(255, 53, 53);
+}
+body{
+  margin: 0
+}
+h2 {
+  background-color: #f0f0f0; /* Cor de fundo */
+  font-size: 24px; /* Tamanho da fonte */
+  padding: 10px; /* Espaçamento interno */
+  width: 100vh;
+  text-align: center;
+}
+
+.drag{
+  display: grid;
+    width: 200px;
+    background-color: white;
+    text-align: center;
+    cursor: grab;
+    margin: 10px;
+    border-radius:5%;
+    justify-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sortable{
+    display: flex;
+    border: 1px solid #000;
+    width: 300px;
+    justify-content: center; /* Alinhe as divs filhas horizontalmente no centro */
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    top: 0;
+    align-content: flex-start;
+    
+
+}
+#Doing{
+  background-color: rgba(0, 255, 221, 0.822);
+  min-height: 700px;
+
+}
+#To\ Do{
+  background-color: #ecdd53;
+
+
+
+
+}
+#Done{
+  background-color: rgba(0, 255, 157, 0.822);
+
+
+
+}
+#botoes{
+  background-color: rgb(53, 53, 53);
+  padding: 7px;
+  margin-bottom: 15px;
+}
+.descricao{
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+}
+
+#elipses{
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

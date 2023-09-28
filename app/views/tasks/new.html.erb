@@ -1,0 +1,14 @@
+<body style="padding: 0">
+  <div id="minhaDiv">
+    <%= link_to "Voltar Para Tarefas", tasks_path, id: "back" %>
+  </div>
+  <div id="divPaiVerde">
+    <div style="background-color: rgba(1, 209, 164, 0.349); width: 400px; text-align: center; border-radius: 15px;" id="formVerde">
+      <h1 style="text-align: center">Nova Tarefa</h1>
+
+      <%= render "form", task: @task %>
+    </div>
+  </div>
+</body>
+
+

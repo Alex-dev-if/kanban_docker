@@ -1,0 +1,19 @@
+<body> <!-- Usado para motrar a task -->
+  <div id="botoes">
+    <%= link_to "Editar a Tarefa", edit_task_path(@task), id: "edit", class: "button"%>
+    <%= link_to "Voltar Para Tarefas", tasks_path, id: "back", class: "button" %>
+    <%= button_to "Apagar", @task, method: :delete, id: "delete", class: "button" %>
+  </div>
+  <div id="<%= dom_id task %>" class="task">
+    <p style="margin-left: 12px; font-size: 20px">
+      <strong>Título:</strong>
+      <%= task.name %>
+    </p>
+    <p style="margin-left: 12px; font-size: 20px">
+      <strong>Descrição:</strong>
+      <%= task.description %>
+    </p>
+  </div>
+  <%= stylesheet_link_tag 'show'%>
+</body>
+
