@@ -4,10 +4,10 @@ Um projeto em ruby on rails para construir uma estrutura ágil Kanban capaz de c
 
 # Requerimentos:
 
-Ruby on Rails 7.0.7.2
-Ruby 3.2.2
-Javascript
-Postgresql 15
+* Ruby on Rails 7.0.7.2
+* Ruby 3.2.2
+* Javascript
+* Postgresql 15
 
 # Para executar o projeto
 
