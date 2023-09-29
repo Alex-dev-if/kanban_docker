@@ -1,26 +1,18 @@
 class DashboardController < ApplicationController
     def index
-        result_todo = ActiveRecord::Base.connection.execute('SELECT todo FROM colunas')
-        result_doing = ActiveRecord::Base.connection.execute('SELECT doing FROM colunas')
-        result_done = ActiveRecord::Base.connection.execute('SELECT done FROM colunas')
 
-        @todo = []
-        result_todo.each do |row|
-          @todo << row['todo']
-        end
+        
+        
+        @todo_count = ActiveRecord::Base.connection.execute("SELECT COUNT(*) FROM tasks WHERE status = 'To Do'")
+        @todo = @todo_count.getvalue(0, 0)
 
-        @doing = []
-        result_doing.each do |row|
-          @doing << row['doing']
-        end
+        @doing_count = ActiveRecord::Base.connection.execute("SELECT COUNT(*) FROM tasks WHERE status = 'Doing'")
+        @doing = @doing_count.getvalue(0, 0)
 
-        @done = []
-        result_done.each do |row|
-          @done << row['done']
-        end
+        @done_count = ActiveRecord::Base.connection.execute("SELECT COUNT(*) FROM tasks WHERE status = 'Done'")
+        @done = @done_count.getvalue(0, 0)
 
-        @unique_months = Task.select("DISTINCT(EXTRACT(MONTH FROM created_at)) AS month").pluck(Arel.sql("EXTRACT(MONTH FROM created_at)"))
-        @unique_months = @unique_months.map { |month| month.to_i }
+
         @meses_done = Task.where(status: 'Done').select("DISTINCT(EXTRACT(MONTH FROM created_at)) AS month").pluck(Arel.sql("EXTRACT(MONTH FROM created_at)"))
         @meses_done = @meses_done.map { |month| month.to_i }
 
