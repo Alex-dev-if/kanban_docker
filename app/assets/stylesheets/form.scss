@@ -1,8 +1,8 @@
 body{
     display: grid;
     padding: 10px;
-    grid-template-rows: 1fr 1fr; /* Duas colunas com tamanhos iguais */
-    max-height: 400px; /* Defina a altura máxima desejada em pixels ou outras unidades */
+    grid-template-rows: 1fr 1fr; 
+    max-height: 400px; 
 
     
     
@@ -43,8 +43,8 @@ body{
     padding: 7px;
     margin-bottom: 15px;
     height: 38px;
-    max-height: 38px; /* Define a altura máxima desejada em pixels ou outras unidades */
-    height: auto; /* Permite que a altura seja determinada pelo conteúdo */
+    max-height: 38px; 
+    height: auto; 
 }
 
 div{
@@ -64,7 +64,7 @@ div{
 }
 
 .barraembaixo:focus {
-    outline: none; /* Remove o contorno quando o input está focado */
+    outline: none; 
   }
 .ae{
     display: inline-block;
