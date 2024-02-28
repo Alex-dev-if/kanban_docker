@@ -1,13 +1,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-<<<<<<< HEAD
-  username: postgres
-  password: alexnunes12
-=======
   username: postgres # mudar
-  password: 1234 # mudar 
->>>>>>> fff12637e76fc555fc72902db355d3e4f45548e1
+  password: alexnunes12 # mudar 
   host: localhost
   port: 5432
 

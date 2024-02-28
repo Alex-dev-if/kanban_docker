@@ -1,0 +1,23 @@
+databases:
+  - name: Kanban_ruby_on_rails
+    databaseName: Kanban_ruby_on_rails
+    user: Kanban_ruby_on_rails
+    plan: free
+
+services:
+  - type: web
+    name: Kanban_ruby_on_rails
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
+    startCommand: "bundle exec rails server"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: Kanban_ruby_on_rails
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: 2
+        value: 2 # sensible default
