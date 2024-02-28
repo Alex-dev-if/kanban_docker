@@ -42,7 +42,6 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
-    puts "Cheguei aqui"
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to task_url(@task) }
@@ -54,11 +53,11 @@ class TasksController < ApplicationController
     end
   end
 
-  
+  # GET /tasks/1/update_status/Done
   def update_status
     @task = Task.find(params[:id])
 
-    new_status = params[:new_status] # Recuperando o novo status da URL
+    new_status = params[:new_status] # Recuperar o novo status da URL
 
     if @task.update(status: new_status)
       redirect_to tasks_path
@@ -81,12 +80,10 @@ class TasksController < ApplicationController
   end
 
   private 
-    # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def task_params
       params.require(:task).permit(:name, :description, :status)
     end

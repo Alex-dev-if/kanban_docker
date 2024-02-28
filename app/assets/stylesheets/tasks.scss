@@ -1,7 +1,7 @@
 .container {
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-     /* Define a altura para ocupar toda a altura da janela */
+    justify-content: center; 
+    
 }
 .link{
   display: inline-block; 
@@ -30,9 +30,9 @@ body{
   margin: 0
 }
 h2 {
-  background-color: #f0f0f0; /* Cor de fundo */
-  font-size: 24px; /* Tamanho da fonte */
-  padding: 10px; /* Espaçamento interno */
+  background-color: #f0f0f0; 
+  font-size: 24px;
+  padding: 10px; 
   width: 100vh;
   text-align: center;
 }
@@ -54,7 +54,7 @@ h2 {
     display: flex;
     border: 1px solid #000;
     width: 300px;
-    justify-content: center; /* Alinhe as divs filhas horizontalmente no centro */
+    justify-content: center;
     flex-wrap: wrap;
     padding-bottom: 10px;
     top: 0;
