@@ -1,7 +1,7 @@
 databases:
   - name: listas_development2
     databaseName: listas_development2
-    user: postgres
+    user: Alex
     plan: free
 
 services:
