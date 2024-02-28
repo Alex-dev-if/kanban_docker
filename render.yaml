@@ -1,12 +1,12 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
+  - name: listas_development2
+    databaseName: listas_development2
+    user: postgres
     plan: free
 
 services:
   - type: web
-    name: mysite
+    name: listas_development2
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
