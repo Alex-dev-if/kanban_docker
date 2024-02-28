@@ -1,12 +1,12 @@
 databases:
-  - name: listas_development2
-    databaseName: listas_development2
+  - name: listas_development
+    databaseName: listas_development
     user: mysite
     plan: free
 
 services:
   - type: web
-    name: listas_development2
+    name: listas_development
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
@@ -15,7 +15,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: listas_development2
+          name: listas_development
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
