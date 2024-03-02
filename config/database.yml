@@ -1,10 +1,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres # mudar
-  password: alexnunes12 # mudar 
-  host: localhost
-  port: 5432
+  url: <%= ENV["DATABASE_URL"] %>
+
 
 development:
   <<: *default
@@ -19,5 +17,4 @@ test:
 production:
   <<: *default
   database: listas_production2
-  username: listas
-  password: <%= ENV["LISTAS_DATABASE_PASSWORD"] %>
+ 
