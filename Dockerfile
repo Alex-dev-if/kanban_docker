@@ -12,8 +12,6 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
 RUN apt update && apt install -y libpq-dev vim htop postgresql-15
 
 
-RUN gem install pg 
-
 ADD . /home/Kanban_ruby_on_rails/web
 WORKDIR /home/Kanban_ruby_on_rails/web
 
