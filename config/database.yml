@@ -3,6 +3,7 @@ default: &default
   encoding: unicode
   user: <%= ENV["PG_USER"] %>
   password: <%= ENV["PG_PASSWORD"] %>
+  port: <%= ENV["PORT"] %>
 
 development:
   <<: *default
