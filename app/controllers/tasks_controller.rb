@@ -51,7 +51,7 @@ class TasksController < ApplicationController
       end
     end
   end
-  puts "siiii #{ENV["PG_USER"]}"
+
   # GET /tasks/1/update_status/Done
   def update_status
     @task = Task.find(params[:id])
